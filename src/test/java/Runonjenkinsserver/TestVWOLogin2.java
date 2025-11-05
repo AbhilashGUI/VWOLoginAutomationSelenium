@@ -3,8 +3,8 @@ package Runonjenkinsserver;
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -16,16 +16,17 @@ import java.time.Duration;
 
 public class TestVWOLogin2 {
 
-    EdgeOptions options;
+    ChromeOptions options;
     WebDriver driver;
 
 
     @BeforeSuite
     public void setup()
     {
-        options=new EdgeOptions();
+        options=new ChromeOptions();
         options.addArguments("--start-maximized");
-        driver = new EdgeDriver(options);
+        options.addArguments("--headless=new");
+        driver = new ChromeDriver(options);
     }
 
 

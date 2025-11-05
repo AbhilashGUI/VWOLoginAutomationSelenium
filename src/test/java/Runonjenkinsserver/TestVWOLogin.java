@@ -6,8 +6,8 @@ import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
@@ -24,14 +24,15 @@ public class TestVWOLogin {
     // One Negative - Invalid Username, password -> Error
     // One Positive - Valid Username, password -> Dashboard Page
 
-    EdgeOptions options;
+    ChromeOptions options;
     WebDriver driver;
 
     @BeforeSuite
     public void setUp() {
-        options = new EdgeOptions();
+        options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        driver = new EdgeDriver(options);
+        options.addArguments("--headless=new");
+        driver = new ChromeDriver(options);
 //        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
     }
 
